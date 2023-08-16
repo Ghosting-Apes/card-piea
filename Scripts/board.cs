@@ -9,6 +9,7 @@ public partial class board : Node2D
 	{
 		GD.Print("Hello!!");
 		Console.WriteLine("HELLO WITH WRITELINE");
+		GD.Print("Hello with GD.print");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
