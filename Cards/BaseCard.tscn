@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://0u47m5eh3x4v"]
+
+[ext_resource type="Script" path="res://Cards/BaseCard.cs" id="1_cqko3"]
+
+[node name="BaseCard" type="MarginContainer"]
+offset_left = 533.0
+offset_top = 217.0
+offset_right = 653.0
+offset_bottom = 396.0
+script = ExtResource("1_cqko3")
+
+[node name="CardImg" type="Sprite2D" parent="."]
