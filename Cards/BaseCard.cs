@@ -18,12 +18,9 @@ public partial class BaseCard : MarginContainer
 		{
             texture = (Texture2D)GD.Load("res://Images/purplegomugomu10.png");
         }
-/*        var texture = (Texture2D)GD.Load("res://Images/redgomugomu10.png");
- *        
-*/        var sprite = GetNode<Sprite2D>("CardImg");
+		
+		var sprite = GetNode<Sprite2D>("CardImg");
         sprite.Texture = texture;
-
-        GD.Print("WORKS WITH NEW CLASS");
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

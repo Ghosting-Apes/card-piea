@@ -5,6 +5,8 @@
 [node name="Playspace" type="Node2D"]
 script = ExtResource("1_y2fqq")
 
-[node name="Deck" type="Node" parent="."]
+[node name="Player1_Deck" type="Node" parent="."]
 
 [node name="Background" type="Sprite2D" parent="."]
+
+[node name="Player2_Deck" type="Node" parent="."]

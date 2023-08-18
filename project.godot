@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Card-piea"
-run/main_scene="res://Cards/BaseCard.tscn"
+run/main_scene="res://playspace.tscn"
 config/features=PackedStringArray("4.1", "C#", "Mobile")
 config/icon="res://icon.svg"
 
