@@ -24,6 +24,7 @@ public partial class Playspace : Node2D
 			playerOneDeck.AddChild(newCard);
 		}
 
+
 		// Player 2 Deck
 		for (int i = 0; i < 5; i++)
 		{
