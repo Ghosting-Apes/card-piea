@@ -1,54 +1,56 @@
 using Godot;
 using System;
+using System.Diagnostics.Metrics;
+using System.Reflection.Emit;
+using System.Runtime.ConstrainedExecution;
+
+public enum Element
+{
+    NONE = 0,
+    LIGHTNING,
+	GOMUGOMU,
+	GOLD
+};
+
+public enum Color
+{
+	NONE_COLOR=0,
+	RED,
+	ORANGE,
+	YELLOW,
+	GREEN,
+	BLUE,
+	PURPLE
+};
 
 public partial class BaseCard : MarginContainer
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		Random random = new Random();
-		var x = random.Next(0, 6);
+	public Element element;
+    public int level;
+    public Color color;
+    public int id;
+    public Texture2D texture;
 
-		Texture2D texture;
-		
-		
-		switch(x) 
-		{
-			case 0: texture = (Texture2D)GD.Load("res://Images/redgomugomu10.png");
-			break;
-			
-			case 1: texture = (Texture2D)GD.Load("res://Images/orangegomugomu10.png");
-			break;
-			
-			case 2: texture = (Texture2D)GD.Load("res://Images/yellowgomugomu10.png");
-			break;
-			
-			case 3: texture = (Texture2D)GD.Load("res://Images/greengomugomu10.png");
-			break;
-			
-			case 4: texture = (Texture2D)GD.Load("res://Images/bluegomugomu10.png");
-			break;
-			
-			case 5: texture = (Texture2D)GD.Load("res://Images/purplegomugomu10.png");
-			break;
-			
-			default: texture = (Texture2D)GD.Load("res://Images/blankcard.png");
-			break;
-		}
-		
-		/*
-		if (x == 0)
-		{
-			texture = (Texture2D)GD.Load("res://Images/redgomugomu10.png");
-		}
-		else
-		{
-			texture = (Texture2D)GD.Load("res://Images/purplegomugomu10.png");
-		}
-		*/
-		
+    public void Init(Element el, int level, Color clr, int id)
+    {
+		GD.Print("Initializing image...\n");
+
+		// Sets Init value
+		this.element = el;
+		this.level = level;
+		this.color = clr;
+		this.id = id;
+
+		// Imports texture image
+		texture = (Texture2D)GD.Load($"res://Images/{this.color}{this.element}10.png");
+
+		// Sets texture image
 		var sprite = GetNode<Sprite2D>("CardImg");
 		sprite.Texture = texture;
+    }
+
+    public override void _Ready()
+	{
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
