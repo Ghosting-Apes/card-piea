@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://21325t5xh3aw"]
+
+[ext_resource type="Script" path="res://Deck/Deck.cs" id="1_8bssx"]
+
+[node name="Deck" type="Node2D"]
+position = Vector2(500, 300)
+script = ExtResource("1_8bssx")
+
+[node name="DeckSpace" type="Panel" parent="."]
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -499.0
+offset_top = 102.0
+offset_right = 151.0
+offset_bottom = 352.0
+metadata/_edit_use_anchors_ = true

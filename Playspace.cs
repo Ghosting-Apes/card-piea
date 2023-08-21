@@ -8,8 +8,10 @@ public partial class Playspace : Node2D
 	// Called when the node enters the scene tree for the first time.
 
 	PackedScene BaseCard = (PackedScene)ResourceLoader.Load("res://Cards/BaseCard.tscn");
-	ArrayList player1Deck = new ArrayList();
-	ArrayList player2Deck = new ArrayList();
+/*	PackedScene BaseDeck = (PackedScene)ResourceLoader.Load("res://Deck/Deck.tscn");*/
+
+	ArrayList PlayerOneCards = new ArrayList();
+	ArrayList PlayerTwoCards = new ArrayList();
 
 	public static void Shuffle<T>(Random rng, ArrayList array)
 	{
@@ -25,12 +27,13 @@ public partial class Playspace : Node2D
 
 
 
-    public override void _Ready()
+	public override void _Ready()
 	{
 		GD.Print("Rendering Playspace...");
-		var playerOneDeck = GetNode<Node>("Player1_Deck");
-		var playerTwoDeck = GetNode<Node>("Player2_Deck");
-		
+		var PlayerOneDeck = GetNode<HBoxContainer>("PlayerOneDeck/DeckSpace");
+		var PlayerTwoDeck = GetNode<HBoxContainer>("PlayerTwoDeck/DeckSpace");
+
+
 		// Place-holder values for card
 		int counter = 0;
 		Element el = Element.NONE;
@@ -39,15 +42,15 @@ public partial class Playspace : Node2D
 
 		// Sets values for card
 		for (int elem = 0; elem < 1; elem++)
-        {
-            
+		{
+
 			switch (elem)
 			{
 				case 0:
 					el = Element.GOMUGOMU;
 					break;
 			}
-            for (int lvl = 0; lvl < 1; lvl++)
+			for (int lvl = 0; lvl < 1; lvl++)
 			{
 				switch (lvl)
 				{
@@ -57,12 +60,12 @@ public partial class Playspace : Node2D
 				}
 				for (int color = 0; color < 6; color++)
 				{
-                    
+
 
 					switch (color)
 					{
 						case 0:
-							clr = Color.RED; 
+							clr = Color.RED;
 							break;
 						case 1:
 							clr = Color.ORANGE;
@@ -81,62 +84,57 @@ public partial class Playspace : Node2D
 							break;
 					}
 					// Creates BaseCard node
-                    var newCard = (BaseCard)BaseCard.Instantiate();
+					var newCard = (BaseCard)BaseCard.Instantiate();
+/*					var newPlayerTwoCard = (BaseCard)BaseCard.Instantiate();*/
 
-                    // Initializes values
-                    newCard.Init(el, level, clr, counter);
+					// Initializes values
+					newCard.Init(el, level, clr, counter);
+/*					newPlayerTwoCard.Init(el, level, clr, counter);*/
+
 
 
 					GD.Print($"Enum: {newCard.color}");
-					
-					// Sets position and adds to deck
-					player1Deck.Add(newCard);
-                    counter++;
-                }
+
+					// Adds cards to ArrayList
+					PlayerOneCards.Add(newCard);
+					PlayerTwoCards.Add(newCard.Duplicate());
+
+					// ID
+					counter++;
+				}
 
 			}
 
-        }
+		}
 
+
+		// Randomizes Player Card options
 		Random rnd = new Random();
-		rnd.Next(0, player1Deck.Count);
+		rnd.Next(0, PlayerOneCards.Count);
+		Shuffle<BaseCard>(rnd, PlayerOneCards);
+		Shuffle<BaseCard>(rnd, PlayerTwoCards);
 
-		Shuffle<BaseCard>(rnd, player1Deck);
 
-		for(int i = 0; i < player1Deck.Count; i++)
+		// Appends cards to deck
+		for (int i = 0; i < 5; i++)
 		{
-            int x = (100 * i) + 75;
-            int y = 500;
-			var hold = (BaseCard)player1Deck[i];
-			hold.Position = new Vector2(x, y);
-            playerOneDeck.AddChild(hold);
-        }
+			PlayerOneDeck.AddChild((BaseCard)PlayerOneCards[i]);
+			PlayerTwoDeck.AddChild((BaseCard)PlayerTwoCards[i]);
+		}
 
-		
-
-		// Player 1 Deck
-/*		for(int i = 0; i < 5; i++)
-		{
-			var newCard = (BaseCard)BaseCard.Instantiate();
-			newCard.Name = $"Card {i} for Player 1";
-			
-			int x = (100 * i) + 75;
-			int y = 500;
-			newCard.Position = new Vector2(x, y);
-			playerOneDeck.AddChild(newCard);
-		}*/
+		PlayerOneDeck.PrintTreePretty();
 
 
 		// Player 2 Deck
-/*		for (int i = 0; i < 5; i++)
-		{
-			var newCard = (MarginContainer)BaseCard.Instantiate();
-			newCard.Name = $"Card {i} for Player 2";
-			int x = (100 * i) + 650;
-			int y = 100;
-			newCard.Position = new Vector2(x, y);
-			playerTwoDeck.AddChild(newCard);
-		}*/
+		/*		for (int i = 0; i < 5; i++)
+				{
+					var newCard = (MarginContainer)BaseCard.Instantiate();
+					newCard.Name = $"Card {i} for Player 2";
+					int x = (100 * i) + 650;
+					int y = 100;
+					newCard.Position = new Vector2(x, y);
+					playerTwoDeck.AddChild(newCard);
+				}*/
 	}
 
 	public override void _UnhandledInput(InputEvent @event)

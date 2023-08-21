@@ -7,6 +7,9 @@ offset_left = 533.0
 offset_top = 217.0
 offset_right = 653.0
 offset_bottom = 396.0
+scale = Vector2(0.85, 0.85)
+size_flags_horizontal = 6
+size_flags_vertical = 4
 script = ExtResource("1_cqko3")
 
 [node name="CardImg" type="Sprite2D" parent="."]

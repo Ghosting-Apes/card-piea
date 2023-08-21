@@ -6,8 +6,8 @@ using System.Runtime.ConstrainedExecution;
 
 public enum Element
 {
-    NONE = 0,
-    LIGHTNING,
+	NONE = 0,
+	LIGHTNING,
 	GOMUGOMU,
 	GOLD
 };
@@ -26,13 +26,13 @@ public enum Color
 public partial class BaseCard : MarginContainer
 {
 	public Element element;
-    public int level;
-    public Color color;
-    public int id;
-    public Texture2D texture;
+	public int level;
+	public Color color;
+	public int id;
+	public Texture2D texture;
 
-    public void Init(Element el, int level, Color clr, int id)
-    {
+	public void Init(Element el, int level, Color clr, int id)
+	{
 		GD.Print("Initializing image...\n");
 
 		// Sets Init value
@@ -47,10 +47,13 @@ public partial class BaseCard : MarginContainer
 		// Sets texture image
 		var sprite = GetNode<Sprite2D>("CardImg");
 		sprite.Texture = texture;
-    }
+	}
 
-    public override void _Ready()
+	public override void _Ready()
 	{
+/*		texture = (Texture2D)GD.Load($"res://Images/bluegomugomu10.png");
+		var sprite = GetNode<Sprite2D>("CardImg");
+		sprite.Texture = texture;*/
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
