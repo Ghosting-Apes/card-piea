@@ -8,7 +8,6 @@ public partial class Playspace : Node2D
 	// Called when the node enters the scene tree for the first time.
 
 	PackedScene BaseCard = (PackedScene)ResourceLoader.Load("res://Cards/BaseCard.tscn");
-/*	PackedScene BaseDeck = (PackedScene)ResourceLoader.Load("res://Deck/Deck.tscn");*/
 
 	ArrayList PlayerOneCards = new ArrayList();
 	ArrayList PlayerTwoCards = new ArrayList();
@@ -85,12 +84,9 @@ public partial class Playspace : Node2D
 					}
 					// Creates BaseCard node
 					var newCard = (BaseCard)BaseCard.Instantiate();
-/*					var newPlayerTwoCard = (BaseCard)BaseCard.Instantiate();*/
 
 					// Initializes values
 					newCard.Init(el, level, clr, counter);
-/*					newPlayerTwoCard.Init(el, level, clr, counter);*/
-
 
 
 					GD.Print($"Enum: {newCard.color}");
@@ -124,17 +120,6 @@ public partial class Playspace : Node2D
 
 		PlayerOneDeck.PrintTreePretty();
 
-
-		// Player 2 Deck
-		/*		for (int i = 0; i < 5; i++)
-				{
-					var newCard = (MarginContainer)BaseCard.Instantiate();
-					newCard.Name = $"Card {i} for Player 2";
-					int x = (100 * i) + 650;
-					int y = 100;
-					newCard.Position = new Vector2(x, y);
-					playerTwoDeck.AddChild(newCard);
-				}*/
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -143,18 +128,51 @@ public partial class Playspace : Node2D
 		{
 			if (clicked.Pressed)
 			{
-				GD.Print($"CLICKED ON SCREEN {GetGlobalMousePosition()}");
-				/*				var new_card = (MarginContainer)BaseCard.Instantiate();
-								new_card.Name = "CARD";
-								new_card.Position = GetGlobalMousePosition();
+				GD.Print($"CLICKED ON CARD {clicked.Position}");
+				GD.Print($"X: {clicked.Position.X}");
+				GD.Print($"Y: {clicked.Position.Y}");
+				if(clicked.Position.Y < 650 && clicked.Position.Y > 450)
+				{
+					int cardPos = (int)clicked.Position.X / 120;
+					BaseCard x;
 
-								var deck = GetNode<Node>("Deck");
-								deck.AddChild(new_card);
-								base._UnhandledInput(@event);*/
+					switch (cardPos)
+					{
+						case 0:
+							GD.Print("FIRST CARD");
+							x = GetNode<BaseCard>("PlayerOneDeck/DeckSpace/BaseCard");
+							GD.Print($"Color: {x.color}");
+							break;
+						case 1:
+							GD.Print("SECOND CARD");
+							x = GetNode<BaseCard>("PlayerOneDeck/DeckSpace/@MarginContainer@2");
+							GD.Print($"Color: {x.color}");
+							break;
+						case 2:
+							GD.Print("THIRD CARD");
+							x = GetNode<BaseCard>("PlayerOneDeck/DeckSpace/@MarginContainer@4");
+							GD.Print($"Color: {x.color}");
+							break;
+						case 3:
+							GD.Print("FOURTH CARD");
+							x = GetNode<BaseCard>("PlayerOneDeck/DeckSpace/@MarginContainer@6");
+							GD.Print($"Color: {x.color}");
+							break;
+						case 4:
+							GD.Print("FIFTH CARD");
+							x = GetNode<BaseCard>("PlayerOneDeck/DeckSpace/@MarginContainer@8");
+							GD.Print($"Color: {x.color}");
+							break;
+						default:
+							GD.Print("NONE");
+							break;
+					}
+				}
 			}
 		}
 
 	}
+
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

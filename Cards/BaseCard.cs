@@ -30,6 +30,8 @@ public partial class BaseCard : MarginContainer
 	public Color color;
 	public int id;
 	public Texture2D texture;
+	public Sprite2D sprite;
+	
 
 	public void Init(Element el, int level, Color clr, int id)
 	{
@@ -45,15 +47,30 @@ public partial class BaseCard : MarginContainer
 		texture = (Texture2D)GD.Load($"res://Images/{this.color}{this.element}10.png");
 
 		// Sets texture image
-		var sprite = GetNode<Sprite2D>("CardImg");
+		sprite = GetNode<Sprite2D>("CardImg");
 		sprite.Texture = texture;
+	}
+
+/*	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (@event is InputEventMouseButton clicked)
+		{
+			if (clicked.Pressed)
+			{
+				GD.Print($"CLICKED ON CARD {this.color}");
+			}
+		}
+
+	}*/
+
+	public override Variant _GetDragData(Vector2 atPosition)
+	{
+		GD.Print($"Sprite: {this.sprite}");
+		return sprite.Texture;
 	}
 
 	public override void _Ready()
 	{
-/*		texture = (Texture2D)GD.Load($"res://Images/bluegomugomu10.png");
-		var sprite = GetNode<Sprite2D>("CardImg");
-		sprite.Texture = texture;*/
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
