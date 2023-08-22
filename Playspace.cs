@@ -40,14 +40,30 @@ public partial class Playspace : Node2D
 		Color clr = Color.NONE_COLOR;
 
 		// Sets values for card
-		for (int elem = 0; elem < 1; elem++)
+		for (int elem = 0; elem < 3; elem++)
 		{
 
 			switch (elem)
 			{
 				case 0:
+					// RUBBER
 					el = Element.GOMUGOMU;
 					break;
+
+				case 1:
+					// LIGHTNING
+					el = Element.GOROGORO;
+					break;
+
+				case 2:
+					// GOLD
+					el = Element.GORUGORU;
+					break;
+
+				default:
+					el = Element.NONE;
+					break;
+
 			}
 			for (int lvl = 0; lvl < 1; lvl++)
 			{
@@ -84,16 +100,18 @@ public partial class Playspace : Node2D
 					}
 					// Creates BaseCard node
 					var newCard = (BaseCard)BaseCard.Instantiate();
+					var secondCard = (BaseCard)BaseCard.Instantiate();
 
 					// Initializes values
-					newCard.Init(el, level, clr, counter);
+					newCard.Init(el, level, clr, counter, Player.PLAYERONE);
+					secondCard.Init(el, level, clr, counter, Player.PLAYERTWO);
 
 
 					GD.Print($"Enum: {newCard.color}");
 
 					// Adds cards to ArrayList
 					PlayerOneCards.Add(newCard);
-					PlayerTwoCards.Add(newCard.Duplicate());
+					PlayerTwoCards.Add(secondCard);
 
 					// ID
 					counter++;
@@ -114,64 +132,24 @@ public partial class Playspace : Node2D
 		// Appends cards to deck
 		for (int i = 0; i < 5; i++)
 		{
-			PlayerOneDeck.AddChild((BaseCard)PlayerOneCards[i]);
-			PlayerTwoDeck.AddChild((BaseCard)PlayerTwoCards[i]);
+			var p1Card = (BaseCard)PlayerOneCards[i];
+			p1Card.Name = $"BaseCard{i}";
+
+			var p2Card = (BaseCard)PlayerTwoCards[i];
+			p2Card.Name = $"BaseCard{i+5}";
+
+			PlayerOneDeck.AddChild(p1Card);
+			PlayerTwoDeck.AddChild(p2Card);
 		}
 
 		PlayerOneDeck.PrintTreePretty();
+		PlayerTwoDeck.PrintTreePretty();
 
 	}
 
-	public override void _UnhandledInput(InputEvent @event)
-	{
-		if (@event is InputEventMouseButton clicked)
-		{
-			if (clicked.Pressed)
-			{
-				GD.Print($"CLICKED ON CARD {clicked.Position}");
-				GD.Print($"X: {clicked.Position.X}");
-				GD.Print($"Y: {clicked.Position.Y}");
-				if(clicked.Position.Y < 650 && clicked.Position.Y > 450)
-				{
-					int cardPos = (int)clicked.Position.X / 120;
-					BaseCard x;
 
-					switch (cardPos)
-					{
-						case 0:
-							GD.Print("FIRST CARD");
-							x = GetNode<BaseCard>("PlayerOneDeck/DeckSpace/BaseCard");
-							GD.Print($"Color: {x.color}");
-							break;
-						case 1:
-							GD.Print("SECOND CARD");
-							x = GetNode<BaseCard>("PlayerOneDeck/DeckSpace/@MarginContainer@2");
-							GD.Print($"Color: {x.color}");
-							break;
-						case 2:
-							GD.Print("THIRD CARD");
-							x = GetNode<BaseCard>("PlayerOneDeck/DeckSpace/@MarginContainer@4");
-							GD.Print($"Color: {x.color}");
-							break;
-						case 3:
-							GD.Print("FOURTH CARD");
-							x = GetNode<BaseCard>("PlayerOneDeck/DeckSpace/@MarginContainer@6");
-							GD.Print($"Color: {x.color}");
-							break;
-						case 4:
-							GD.Print("FIFTH CARD");
-							x = GetNode<BaseCard>("PlayerOneDeck/DeckSpace/@MarginContainer@8");
-							GD.Print($"Color: {x.color}");
-							break;
-						default:
-							GD.Print("NONE");
-							break;
-					}
-				}
-			}
-		}
 
-	}
+
 
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

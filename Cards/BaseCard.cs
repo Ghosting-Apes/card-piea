@@ -7,10 +7,17 @@ using System.Runtime.ConstrainedExecution;
 public enum Element
 {
 	NONE = 0,
-	LIGHTNING,
+	GOROGORO,
 	GOMUGOMU,
-	GOLD
+	GORUGORU
 };
+
+public enum Player
+{
+	NONE_PLAYER=0,
+	PLAYERONE,
+	PLAYERTWO
+}
 
 public enum Color
 {
@@ -31,9 +38,10 @@ public partial class BaseCard : MarginContainer
 	public int id;
 	public Texture2D texture;
 	public Sprite2D sprite;
+	public Player player;
 	
 
-	public void Init(Element el, int level, Color clr, int id)
+	public void Init(Element el, int level, Color clr, int id, Player player)
 	{
 		GD.Print("Initializing image...\n");
 
@@ -42,9 +50,10 @@ public partial class BaseCard : MarginContainer
 		this.level = level;
 		this.color = clr;
 		this.id = id;
+		this.player = player;
 
 		// Imports texture image
-		texture = (Texture2D)GD.Load($"res://Images/{this.color}{this.element}10.png");
+		texture = (Texture2D)GD.Load($"res://Images/{this.element}/{this.color}{this.element}{this.level}.png");
 
 		// Sets texture image
 		sprite = GetNode<Sprite2D>("CardImg");

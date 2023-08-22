@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7os4mkmujg00"
-path="res://.godot/imported/purplegomugomu10.png-2505c9c24d5cd36fc36d4212683de907.ctex"
+uid="uid://j813eudqn6eb"
+path="res://.godot/imported/redgorugoru10.png-9eb4ff338486ae27e4a3f5628507a2f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/purplegomugomu10.png"
-dest_files=["res://.godot/imported/purplegomugomu10.png-2505c9c24d5cd36fc36d4212683de907.ctex"]
+source_file="res://Images/gorugoru/redgorugoru10.png"
+dest_files=["res://.godot/imported/redgorugoru10.png-9eb4ff338486ae27e4a3f5628507a2f5.ctex"]
 
 [params]
 
