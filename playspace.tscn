@@ -1,12 +1,163 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4rgw4tydm31f"]
+[gd_scene load_steps=9 format=3 uid="uid://c4rgw4tydm31f"]
 
-[ext_resource type="Script" path="res://Playspace.cs" id="1_y2fqq"]
+[ext_resource type="Script" path="res://Scripts/Playspace.cs" id="1_u7how"]
+[ext_resource type="Script" path="res://Scripts/P1DeckSpace.cs" id="2_l5hxn"]
+[ext_resource type="Script" path="res://Scripts/P2DeckSpace.cs" id="3_616kw"]
+[ext_resource type="Script" path="res://Scripts/P1CardInPlay.cs" id="4_02kbl"]
+[ext_resource type="Script" path="res://Scripts/P2CardInPlay.cs" id="5_hy4gw"]
+[ext_resource type="Texture2D" uid="uid://kxxw3dt4jwt7" path="res://Images/gomugomu/Gomugomu_1.png" id="6_0aqqv"]
+[ext_resource type="Texture2D" uid="uid://cp80u3mhfsvcr" path="res://Images/gorogoro/gorogoro_1.png" id="7_l53fd"]
+[ext_resource type="Texture2D" uid="uid://dlnmntsh5mnvb" path="res://Images/gorugoru/gorugoru_1.png" id="8_0qedt"]
 
 [node name="Playspace" type="Node2D"]
-script = ExtResource("1_y2fqq")
-
-[node name="Player1_Deck" type="Node" parent="."]
+script = ExtResource("1_u7how")
 
 [node name="Background" type="Sprite2D" parent="."]
 
-[node name="Player2_Deck" type="Node" parent="."]
+[node name="PlayerOneDeck" type="Node" parent="."]
+
+[node name="DeckSpace" type="HBoxContainer" parent="PlayerOneDeck"]
+offset_top = 450.0
+offset_right = 600.0
+offset_bottom = 650.0
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+alignment = 1
+script = ExtResource("2_l5hxn")
+
+[node name="PlayerTwoDeck" type="Node" parent="."]
+
+[node name="DeckSpace" type="HBoxContainer" parent="PlayerTwoDeck"]
+offset_left = 552.0
+offset_top = 1.0
+offset_right = 1152.0
+offset_bottom = 201.0
+theme_override_constants/separation = 0
+alignment = 1
+script = ExtResource("3_616kw")
+
+[node name="Chosen1" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 40)
+offset_left = 370.0
+offset_top = 200.0
+offset_right = 490.0
+offset_bottom = 380.0
+expand_mode = 1
+script = ExtResource("4_02kbl")
+
+[node name="Panel" type="Panel" parent="Chosen1"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.5
+offset_top = -110.5
+offset_right = 87.5
+offset_bottom = 111.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(87, 111)
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Chosen1/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Chosen2" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 40)
+offset_left = 630.0
+offset_top = 199.0
+offset_right = 750.0
+offset_bottom = 379.0
+expand_mode = 1
+script = ExtResource("5_hy4gw")
+
+[node name="Panel" type="Panel" parent="Chosen2"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -112.5
+offset_right = 82.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Chosen2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerOneWin" type="HBoxContainer" parent="."]
+offset_left = 19.0
+offset_top = 161.0
+offset_right = 247.0
+offset_bottom = 349.0
+
+[node name="gomugomu" type="VBoxContainer" parent="PlayerOneWin"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerOneWin/gomugomu"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="gorogoro" type="VBoxContainer" parent="PlayerOneWin"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerOneWin/gorogoro"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="gorugoru" type="VBoxContainer" parent="PlayerOneWin"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerOneWin/gorugoru"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="gomudf" type="TextureRect" parent="."]
+offset_left = 39.0
+offset_top = 116.0
+offset_right = 79.0
+offset_bottom = 156.0
+texture = ExtResource("6_0aqqv")
+
+[node name="gorodf" type="TextureRect" parent="."]
+offset_left = 115.0
+offset_top = 117.0
+offset_right = 155.0
+offset_bottom = 157.0
+texture = ExtResource("7_l53fd")
+
+[node name="gorudf" type="TextureRect" parent="."]
+offset_left = 185.0
+offset_top = 117.0
+offset_right = 225.0
+offset_bottom = 157.0
+texture = ExtResource("8_0qedt")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 106.0
+offset_top = 84.0
+offset_right = 168.0
+offset_bottom = 110.0
+text = "Player 1
+"
