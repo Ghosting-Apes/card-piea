@@ -135,14 +135,10 @@ public partial class Playspace : Node2D
 
 	}
 
-
-
-
-
-
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		// Checks if more cards need to be added to deck
         var PlayerOneDeck = GetNode<HBoxContainer>("PlayerOneDeck/DeckSpace");
 		var PlayerTwoDeck = GetNode<HBoxContainer>("PlayerTwoDeck/DeckSpace");
 		if (PlayerOneCards.Count > 0)
@@ -166,5 +162,78 @@ public partial class Playspace : Node2D
         }
 
 		// Game Logic
+		var p1Chosen = GetNode<CenterContainer>("Chosen1/Panel/CenterContainer");
+		var p2Chosen = GetNode<CenterContainer>("Chosen2/Panel/CenterContainer");
+
+		var p1WinBox = GetNode<HBoxContainer>("PlayerOneWin");
+
+		CenterContainer winLoc = null;
+
+		if(p1Chosen.GetChildCount() > 0 && p2Chosen.GetChildCount() > 0)
+		{
+			// Selected cards
+			var selected1 = (BaseCard)p1Chosen.GetChildren()[0];
+            var selected2 = (BaseCard)p2Chosen.GetChildren()[0];
+
+            GD.Print($"Selected 1: {selected1.Name}");
+            GD.Print($"Selected 2: {selected2.Name}");
+
+
+            if (selected1.element == Element.GOMUGOMU)
+			{
+				if(selected2.element == Element.GOROGORO)
+				{
+					GD.Print("PLAYER 1 WINS");
+					winLoc = (CenterContainer)((VBoxContainer)p1WinBox.GetChildren()[0]).GetChildren()[0];
+				}
+				else if(selected2.element == Element.GORUGORU)
+				{
+					GD.Print("PLAYER 2 WINS");
+
+				}
+				else
+				{
+					GD.Print("TIE");
+				}
+			}
+			else if(selected1.element == Element.GORUGORU)
+			{
+				if(selected2.element == Element.GOROGORO)
+				{
+                    GD.Print("PLAYER 2 WINS");
+                }
+				else if(selected2.element == Element.GOMUGOMU)
+				{
+					GD.Print("PLAYER 1 WINS");
+                    winLoc = (CenterContainer)((VBoxContainer)p1WinBox.GetChildren()[2]).GetChildren()[0];
+                }
+				else
+				{
+					GD.Print("TIE");
+				}
+			}
+			else
+			{
+				if(selected2.element == Element.GORUGORU)
+				{
+                    GD.Print("PLAYER 1 WINS");
+                    winLoc = (CenterContainer)((VBoxContainer)p1WinBox.GetChildren()[1]).GetChildren()[0];
+
+                }
+				else if(selected2.element == Element.GOMUGOMU)
+				{
+                    GD.Print("PLAYER 2 WINS");
+
+                }
+				else
+				{
+					GD.Print("TIE");
+				}
+            }
+
+			p1Chosen.RemoveChild(selected1);
+			p2Chosen.RemoveChild(selected2);
+			winLoc.AddChild(selected1);
+		}
     }
 }

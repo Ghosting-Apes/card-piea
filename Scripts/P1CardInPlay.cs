@@ -20,12 +20,15 @@ public partial class P1CardInPlay : Godot.TextureRect
         GD.Print(card.Name);
 
         // Sets the texture of the Card in Play
-        this.Texture = (Texture2D)data.AsGodotObject().GetType().GetField("texture").GetValue(data.AsGodotObject());
+        //this.Texture = (Texture2D)data.AsGodotObject().GetType().GetField("texture").GetValue(data.AsGodotObject());
 
         // Deletes Card being played from Deck
         var child = GetNode<BaseCard>($"/root/Playspace/PlayerOneDeck/DeckSpace/{card.Name}");
         var parentTest = GetNode<P1DeckSpace>("/root/Playspace/PlayerOneDeck/DeckSpace");
         parentTest.RemoveChild(child);
+
+        var panCen = GetNode<CenterContainer>("Panel/CenterContainer");
+        panCen.AddChild(card);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

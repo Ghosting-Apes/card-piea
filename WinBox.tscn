@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqdvi070jayqm"]
+
+[ext_resource type="Texture2D" uid="uid://kxxw3dt4jwt7" path="res://Images/gomugomu/Gomugomu_1.png" id="1_afhoj"]
+[ext_resource type="Texture2D" uid="uid://cp80u3mhfsvcr" path="res://Images/gorogoro/gorogoro_1.png" id="2_cussp"]
+[ext_resource type="Texture2D" uid="uid://dlnmntsh5mnvb" path="res://Images/gorugoru/gorugoru_1.png" id="3_yvvtx"]
+
+[node name="WinBox" type="Node2D"]
+
+[node name="PlayerOneWin" type="HBoxContainer" parent="."]
+offset_left = 19.0
+offset_top = 161.0
+offset_right = 247.0
+offset_bottom = 349.0
+
+[node name="gomugomu" type="VBoxContainer" parent="PlayerOneWin"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerOneWin/gomugomu"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="gorogoro" type="VBoxContainer" parent="PlayerOneWin"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerOneWin/gorogoro"]
+layout_mode = 2
+
+[node name="gorugoru" type="VBoxContainer" parent="PlayerOneWin"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerOneWin/gorugoru"]
+layout_mode = 2
+
+[node name="gomudf" type="TextureRect" parent="."]
+offset_left = 39.0
+offset_top = 116.0
+offset_right = 79.0
+offset_bottom = 156.0
+texture = ExtResource("1_afhoj")
+
+[node name="gorodf" type="TextureRect" parent="."]
+offset_left = 115.0
+offset_top = 117.0
+offset_right = 155.0
+offset_bottom = 157.0
+texture = ExtResource("2_cussp")
+
+[node name="gorudf" type="TextureRect" parent="."]
+offset_left = 185.0
+offset_top = 117.0
+offset_right = 225.0
+offset_bottom = 157.0
+texture = ExtResource("3_yvvtx")
