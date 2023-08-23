@@ -16,7 +16,17 @@ public partial class P2CardInPlay : TextureRect
 
     public override void _DropData(Vector2 atPosition, Variant data)
     {
+        // Gets Card being dragged
+        var card = (BaseCard)data;
+        GD.Print(card.Name);
+
+        // Sets the texture of the Card in Play
         this.Texture = (Texture2D)data.AsGodotObject().GetType().GetField("texture").GetValue(data.AsGodotObject());
+
+        // Deletes Card being played from Deck
+        var child = GetNode<BaseCard>($"/root/Playspace/PlayerTwoDeck/DeckSpace/{card.Name}");
+        var parentTest = GetNode<HBoxContainer>("/root/Playspace/PlayerTwoDeck/DeckSpace");
+        parentTest.RemoveChild(child);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

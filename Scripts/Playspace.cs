@@ -24,8 +24,6 @@ public partial class Playspace : Node2D
 		}
 	}
 
-
-
 	public override void _Ready()
 	{
 		GD.Print("Rendering Playspace...");
@@ -75,8 +73,6 @@ public partial class Playspace : Node2D
 				}
 				for (int color = 0; color < 6; color++)
 				{
-
-
 					switch (color)
 					{
 						case 0:
@@ -106,9 +102,6 @@ public partial class Playspace : Node2D
 					newCard.Init(el, level, clr, counter, Player.PLAYERONE);
 					secondCard.Init(el, level, clr, counter, Player.PLAYERTWO);
 
-
-					GD.Print($"Enum: {newCard.color}");
-
 					// Adds cards to ArrayList
 					PlayerOneCards.Add(newCard);
 					PlayerTwoCards.Add(secondCard);
@@ -121,25 +114,20 @@ public partial class Playspace : Node2D
 
 		}
 
-
 		// Randomizes Player Card options
 		Random rnd = new Random();
 		rnd.Next(0, PlayerOneCards.Count);
 		Shuffle<BaseCard>(rnd, PlayerOneCards);
 		Shuffle<BaseCard>(rnd, PlayerTwoCards);
 
-
 		// Appends cards to deck
 		for (int i = 0; i < 5; i++)
 		{
-			var p1Card = (BaseCard)PlayerOneCards[i];
-			p1Card.Name = $"BaseCard{i}";
+            PlayerOneDeck.AddChild((BaseCard)PlayerOneCards[i]);
+            PlayerOneCards.RemoveAt(i);
 
-			var p2Card = (BaseCard)PlayerTwoCards[i];
-			p2Card.Name = $"BaseCard{i+5}";
-
-			PlayerOneDeck.AddChild(p1Card);
-			PlayerTwoDeck.AddChild(p2Card);
+            PlayerTwoDeck.AddChild((BaseCard)PlayerTwoCards[i]);
+            PlayerTwoCards.RemoveAt(i);
 		}
 
 		PlayerOneDeck.PrintTreePretty();
@@ -155,5 +143,28 @@ public partial class Playspace : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-	}
+        var PlayerOneDeck = GetNode<HBoxContainer>("PlayerOneDeck/DeckSpace");
+		var PlayerTwoDeck = GetNode<HBoxContainer>("PlayerTwoDeck/DeckSpace");
+		if (PlayerOneCards.Count > 0)
+        {
+            if (PlayerOneDeck.GetChildCount() < 5)
+            {
+                PlayerOneDeck.AddChild((BaseCard)PlayerOneCards[0]);
+                PlayerOneCards.RemoveAt(0);
+            }
+
+        }
+
+        if (PlayerTwoCards.Count > 0)
+        {
+            if (PlayerTwoDeck.GetChildCount() < 5)
+            {
+                PlayerTwoDeck.AddChild((BaseCard)PlayerTwoCards[0]);
+                PlayerTwoCards.RemoveAt(0);
+            }
+
+        }
+
+		// Game Logic
+    }
 }

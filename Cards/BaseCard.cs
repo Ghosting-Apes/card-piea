@@ -82,8 +82,20 @@ public partial class BaseCard : MarginContainer
 	{
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+/*    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event is InputEventMouseButton clicked)
+        {
+            if (clicked.Pressed)
+			{
+                GD.Print($"CLICKED ON CARD {clicked.Position}");
+            }
+        }
+
+    }*/
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
 	}
 }

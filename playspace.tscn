@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://c4rgw4tydm31f"]
 
-[ext_resource type="Script" path="res://Playspace.cs" id="1_y2fqq"]
-[ext_resource type="Script" path="res://P1DeckSpace.cs" id="2_wsayd"]
-[ext_resource type="Script" path="res://P2DeckSpace.cs" id="3_t5c5d"]
-[ext_resource type="Script" path="res://P1CardInPlay.cs" id="4_h2rcj"]
-[ext_resource type="Script" path="res://P2CardInPlay.cs" id="5_nxvdg"]
+[ext_resource type="Script" path="res://Scripts/Playspace.cs" id="1_u7how"]
+[ext_resource type="Script" path="res://Scripts/P1DeckSpace.cs" id="2_l5hxn"]
+[ext_resource type="Script" path="res://Scripts/P2DeckSpace.cs" id="3_616kw"]
+[ext_resource type="Script" path="res://Scripts/P1CardInPlay.cs" id="4_02kbl"]
+[ext_resource type="Script" path="res://Scripts/P2CardInPlay.cs" id="5_hy4gw"]
 
 [node name="Playspace" type="Node2D"]
-script = ExtResource("1_y2fqq")
+script = ExtResource("1_u7how")
 
 [node name="Background" type="Sprite2D" parent="."]
 
@@ -20,7 +20,7 @@ offset_bottom = 650.0
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 alignment = 1
-script = ExtResource("2_wsayd")
+script = ExtResource("2_l5hxn")
 
 [node name="PlayerTwoDeck" type="Node" parent="."]
 
@@ -31,7 +31,7 @@ offset_right = 1152.0
 offset_bottom = 201.0
 theme_override_constants/separation = 0
 alignment = 1
-script = ExtResource("3_t5c5d")
+script = ExtResource("3_616kw")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(40, 40)
@@ -40,7 +40,7 @@ offset_top = 200.0
 offset_right = 490.0
 offset_bottom = 380.0
 expand_mode = 1
-script = ExtResource("4_h2rcj")
+script = ExtResource("4_02kbl")
 
 [node name="Panel" type="Panel" parent="TextureRect"]
 show_behind_parent = true
@@ -56,7 +56,7 @@ offset_top = 199.0
 offset_right = 750.0
 offset_bottom = 379.0
 expand_mode = 1
-script = ExtResource("5_nxvdg")
+script = ExtResource("5_hy4gw")
 
 [node name="Panel" type="Panel" parent="TextureRect2"]
 show_behind_parent = true
