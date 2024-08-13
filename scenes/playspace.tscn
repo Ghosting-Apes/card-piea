@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://crv6abary6adq"]
 
-[ext_resource type="Texture2D" uid="uid://c5rgic0wtd6gc" path="res://images/thousand_sunny.png" id="1_fhkww"]
+[ext_resource type="Texture2D" uid="uid://c5rgic0wtd6gc" path="res://Images/thousand_sunny.png" id="1_fhkww"]
 
 [node name="Playspace" type="Node2D"]
 

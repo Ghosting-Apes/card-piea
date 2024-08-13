@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5rgic0wtd6gc"
-path="res://.godot/imported/thousand_sunny.png-d0321b232e2e94db633b74f2ee7ec8f5.ctex"
+path="res://.godot/imported/thousand_sunny.png-b5223a9c1cf0836ab3a457fc17f59311.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/thousand_sunny.png"
-dest_files=["res://.godot/imported/thousand_sunny.png-d0321b232e2e94db633b74f2ee7ec8f5.ctex"]
+source_file="res://Images/thousand_sunny.png"
+dest_files=["res://.godot/imported/thousand_sunny.png-b5223a9c1cf0836ab3a457fc17f59311.ctex"]
 
 [params]
 

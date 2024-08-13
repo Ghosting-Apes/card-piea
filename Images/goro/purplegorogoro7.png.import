@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://kdcfff3y4su5"
-path="res://.godot/imported/purplegorogoro7.png-22b95dc18550cdcc9d7bebc9d0c5db42.ctex"
+path="res://.godot/imported/purplegorogoro7.png-5bce3f6e259a6e3aa5ee45ea0eaaaa89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/goro/purplegorogoro7.png"
-dest_files=["res://.godot/imported/purplegorogoro7.png-22b95dc18550cdcc9d7bebc9d0c5db42.ctex"]
+source_file="res://Images/goro/purplegorogoro7.png"
+dest_files=["res://.godot/imported/purplegorogoro7.png-5bce3f6e259a6e3aa5ee45ea0eaaaa89.ctex"]
 
 [params]
 

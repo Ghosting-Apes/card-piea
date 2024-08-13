@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dy4onlyusi46h"
-path="res://.godot/imported/bluegorugoru6.png-246f7eea3dec32b8bcf8293e1c0440a4.ctex"
+path="res://.godot/imported/bluegorugoru6.png-ef59857c6562a79da89dcff3df79456d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/goru/bluegorugoru6.png"
-dest_files=["res://.godot/imported/bluegorugoru6.png-246f7eea3dec32b8bcf8293e1c0440a4.ctex"]
+source_file="res://Images/goru/bluegorugoru6.png"
+dest_files=["res://.godot/imported/bluegorugoru6.png-ef59857c6562a79da89dcff3df79456d.ctex"]
 
 [params]
 
