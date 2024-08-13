@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cpwv2wvqna3j3"
-path="res://.godot/imported/purplegomugomu2.png-8c60cc5c728eb83007c502f9d57869cb.ctex"
+path="res://.godot/imported/purplegomugomu2.png-85bd3188bfa26c23651014edd990153c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/gomu/purplegomugomu2.png"
-dest_files=["res://.godot/imported/purplegomugomu2.png-8c60cc5c728eb83007c502f9d57869cb.ctex"]
+source_file="res://images/gomu/purplegomugomu2.png"
+dest_files=["res://.godot/imported/purplegomugomu2.png-85bd3188bfa26c23651014edd990153c.ctex"]
 
 [params]
 

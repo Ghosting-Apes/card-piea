@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://crv6abary6adq"]
+
+[ext_resource type="Texture2D" uid="uid://c5rgic0wtd6gc" path="res://images/thousand_sunny.png" id="1_fhkww"]
+
+[node name="Playspace" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(964, 543.48)
+scale = Vector2(1, 1.00096)
+texture = ExtResource("1_fhkww")

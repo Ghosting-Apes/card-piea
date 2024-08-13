@@ -11,6 +11,11 @@ config_version=5
 [application]
 
 config/name="card-piea"
-run/main_scene="res://playspace.tscn"
+run/main_scene="res://scenes/playspace.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080

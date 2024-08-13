@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgtyoaavr26tf"
-path="res://.godot/imported/orangegorogoro6.png-41d7c6cbbfcc60d3df3a1c08e32b8ecf.ctex"
+path="res://.godot/imported/orangegorogoro6.png-75ba1d50c068d51197e0c3f6e3308a95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/goro/orangegorogoro6.png"
-dest_files=["res://.godot/imported/orangegorogoro6.png-41d7c6cbbfcc60d3df3a1c08e32b8ecf.ctex"]
+source_file="res://images/goro/orangegorogoro6.png"
+dest_files=["res://.godot/imported/orangegorogoro6.png-75ba1d50c068d51197e0c3f6e3308a95.ctex"]
 
 [params]
 

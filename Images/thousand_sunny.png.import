@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0e7ixw4dca50"
-path="res://.godot/imported/orangegomugomu3.png-8e07d65eae1cf4cc0ab64fd9d43c1a61.ctex"
+uid="uid://c5rgic0wtd6gc"
+path="res://.godot/imported/thousand_sunny.png-d0321b232e2e94db633b74f2ee7ec8f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/gomu/orangegomugomu3.png"
-dest_files=["res://.godot/imported/orangegomugomu3.png-8e07d65eae1cf4cc0ab64fd9d43c1a61.ctex"]
+source_file="res://images/thousand_sunny.png"
+dest_files=["res://.godot/imported/thousand_sunny.png-d0321b232e2e94db633b74f2ee7ec8f5.ctex"]
 
 [params]
 
