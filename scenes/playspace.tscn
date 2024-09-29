@@ -1,10 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://crv6abary6adq"]
+[gd_scene load_steps=6 format=3 uid="uid://crv6abary6adq"]
 
-[ext_resource type="Texture2D" uid="uid://c5rgic0wtd6gc" path="res://Images/thousand_sunny.png" id="1_fhkww"]
+[ext_resource type="Texture2D" uid="uid://c5rgic0wtd6gc" path="res://images/thousand_sunny.png" id="1_fhkww"]
+[ext_resource type="Script" path="res://scenes/playspace.gd" id="1_llhnx"]
+[ext_resource type="Script" path="res://scenes/P1Deckspace.gd" id="2_6rb46"]
+[ext_resource type="PackedScene" uid="uid://ldtg43wvc54f" path="res://scenes/card.tscn" id="2_j75ki"]
+[ext_resource type="Script" path="res://scenes/P2Deckspace.gd" id="4_v7hh0"]
 
 [node name="Playspace" type="Node2D"]
+script = ExtResource("1_llhnx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(964, 543.48)
 scale = Vector2(1, 1.00096)
 texture = ExtResource("1_fhkww")
+
+[node name="PlayerOne" type="Node" parent="."]
+
+[node name="Deckspace" type="HBoxContainer" parent="PlayerOne"]
+offset_left = 541.0
+offset_top = 870.0
+offset_right = 1330.0
+offset_bottom = 1092.0
+size_flags_vertical = 3
+theme_override_constants/separation = 100
+alignment = 1
+script = ExtResource("2_6rb46")
+
+[node name="Card" parent="PlayerOne/Deckspace" instance=ExtResource("2_j75ki")]
+layout_mode = 2
+
+[node name="PlayerTwo" type="Node" parent="."]
+
+[node name="Deckspace" type="HBoxContainer" parent="PlayerTwo"]
+offset_left = 541.0
+offset_top = 10.0
+offset_right = 1330.0
+offset_bottom = 232.0
+size_flags_vertical = 3
+theme_override_constants/separation = 100
+alignment = 1
+script = ExtResource("4_v7hh0")
+
+[node name="Card" parent="PlayerTwo/Deckspace" instance=ExtResource("2_j75ki")]
+layout_mode = 2

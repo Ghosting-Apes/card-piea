@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjjr0qplrpgrn"
-path="res://.godot/imported/wave_art.jpeg-9f1da7dddf4d8220692e849459f1f6a5.ctex"
+path="res://.godot/imported/wave_art.jpeg-261c89b30c9526c886bad7244c0a47df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/wave_art.jpeg"
-dest_files=["res://.godot/imported/wave_art.jpeg-9f1da7dddf4d8220692e849459f1f6a5.ctex"]
+source_file="res://images/wave_art.jpeg"
+dest_files=["res://.godot/imported/wave_art.jpeg-261c89b30c9526c886bad7244c0a47df.ctex"]
 
 [params]
 
