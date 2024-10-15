@@ -1,37 +1,16 @@
 extends MarginContainer
+var image: Image
 
-var rng = RandomNumberGenerator.new()
 
-
+func build(lvl: int, clr: String, type: String):
+	var path = "res://images/"+type+"/"+clr+type+type+str(lvl)+".png"
+	image = Image.load_from_file(path)
+	$Sprite2D.texture = ImageTexture.create_from_image(image)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var texture: ImageTexture
-	var rand = rng.randi_range(0, 5)
+	pass
 	
-	match rand:
-		0:
-			var image = Image.load_from_file("res://images/gomu/bluegomugomu1.png")
-			$Sprite2D.texture = ImageTexture.create_from_image(image)
-		1:
-			var image = Image.load_from_file("res://images/gomu/redgomugomu1.png")
-			$Sprite2D.texture = ImageTexture.create_from_image(image)
-		2:
-			var image = Image.load_from_file("res://images/gomu/yellowgomugomu1.png")
-			$Sprite2D.texture = ImageTexture.create_from_image(image)
-		3:
-			var image = Image.load_from_file("res://images/gomu/purplegomugomu1.png")
-			$Sprite2D.texture = ImageTexture.create_from_image(image)
-		4:
-			var image = Image.load_from_file("res://images/gomu/orangegomugomu1.png")
-			$Sprite2D.texture = ImageTexture.create_from_image(image)
-		5:
-			var image = Image.load_from_file("res://images/gomu/greengomugomu1.png")
-			$Sprite2D.texture = ImageTexture.create_from_image(image)
-		_:
-			print("WHOOPS: ",rand)
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
