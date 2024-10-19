@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm1g2q7xjt32"]
+
+[ext_resource type="Script" path="res://scenes/card_holder.gd" id="2_2xkb6"]
+
+[node name="Holder" type="TextureRect"]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 191.0
+offset_bottom = 276.0
+expand_mode = 1
+script = ExtResource("2_2xkb6")
+
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.009
+anchor_top = -0.007
+anchor_right = -0.009
+anchor_bottom = -0.007
+offset_left = -0.281
+offset_top = -0.068
+offset_right = 150.719
+offset_bottom = 208.932
+mouse_filter = 2
