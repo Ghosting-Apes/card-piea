@@ -5,9 +5,11 @@
 [ext_resource type="Script" path="res://Scripts/P2DeckSpace.cs" id="3_616kw"]
 [ext_resource type="Script" path="res://Scripts/P1CardInPlay.cs" id="4_02kbl"]
 [ext_resource type="Script" path="res://Scripts/P2CardInPlay.cs" id="5_hy4gw"]
-[ext_resource type="Texture2D" uid="uid://kxxw3dt4jwt7" path="res://Images/gomugomu/Gomugomu_1.png" id="6_0aqqv"]
-[ext_resource type="Texture2D" uid="uid://cp80u3mhfsvcr" path="res://Images/gorogoro/gorogoro_1.png" id="7_l53fd"]
-[ext_resource type="Texture2D" uid="uid://dlnmntsh5mnvb" path="res://Images/gorugoru/gorugoru_1.png" id="8_0qedt"]
+[ext_resource type="Texture2D" uid="uid://kxxw3dt4jwt7" path="res://Images/gomugomu/gomugomufruit/Gomugomu_1.png" id="6_1k7po"]
+[ext_resource type="Texture2D" uid="uid://dlnmntsh5mnvb" path="res://Images/gorugoru/gorugorufruit/gorugoru_1.png" id="7_mx3du"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g7ulk"]
+load_path = "res://.godot/imported/gorogoro 2.png-d0bb5d5d2679d68bb2882653d876d49c.ctex"
 
 [node name="Playspace" type="Node2D"]
 script = ExtResource("1_u7how")
@@ -106,53 +108,41 @@ grow_vertical = 2
 [node name="PlayerOneWin" type="HBoxContainer" parent="."]
 offset_left = 19.0
 offset_top = 161.0
-offset_right = 247.0
-offset_bottom = 349.0
+offset_right = 262.0
+offset_bottom = 389.0
 
-[node name="gomugomu" type="VBoxContainer" parent="PlayerOneWin"]
+[node name="gomugomu1" type="VBoxContainer" parent="PlayerOneWin"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="PlayerOneWin/gomugomu"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="gorogoro" type="VBoxContainer" parent="PlayerOneWin"]
+[node name="gorogoro1" type="VBoxContainer" parent="PlayerOneWin"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="PlayerOneWin/gorogoro"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="gorugoru" type="VBoxContainer" parent="PlayerOneWin"]
+[node name="gorugoru1" type="VBoxContainer" parent="PlayerOneWin"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="PlayerOneWin/gorugoru"]
-layout_mode = 2
-size_flags_vertical = 3
 
 [node name="gomudf" type="TextureRect" parent="."]
 offset_left = 39.0
 offset_top = 116.0
 offset_right = 79.0
 offset_bottom = 156.0
-texture = ExtResource("6_0aqqv")
+texture = ExtResource("6_1k7po")
 
 [node name="gorodf" type="TextureRect" parent="."]
 offset_left = 115.0
 offset_top = 117.0
 offset_right = 155.0
 offset_bottom = 157.0
-texture = ExtResource("7_l53fd")
+texture = SubResource("CompressedTexture2D_g7ulk")
 
 [node name="gorudf" type="TextureRect" parent="."]
 offset_left = 185.0
 offset_top = 117.0
 offset_right = 225.0
 offset_bottom = 157.0
-texture = ExtResource("8_0qedt")
+texture = ExtResource("7_mx3du")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 106.0
@@ -160,4 +150,51 @@ offset_top = 84.0
 offset_right = 168.0
 offset_bottom = 110.0
 text = "Player 1
+"
+
+[node name="PlayerTwoWin" type="HBoxContainer" parent="."]
+offset_left = 860.0
+offset_top = 372.0
+offset_right = 1103.0
+offset_bottom = 600.0
+
+[node name="gomugomu2" type="VBoxContainer" parent="PlayerTwoWin"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="gorogoro2" type="VBoxContainer" parent="PlayerTwoWin"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="gorugoru2" type="VBoxContainer" parent="PlayerTwoWin"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="gomudf2" type="TextureRect" parent="."]
+offset_left = 880.0
+offset_top = 315.0
+offset_right = 920.0
+offset_bottom = 355.0
+texture = ExtResource("6_1k7po")
+
+[node name="gorodf2" type="TextureRect" parent="."]
+offset_left = 954.0
+offset_top = 315.0
+offset_right = 994.0
+offset_bottom = 355.0
+texture = SubResource("CompressedTexture2D_g7ulk")
+
+[node name="gorudf2" type="TextureRect" parent="."]
+offset_left = 1026.0
+offset_top = 314.0
+offset_right = 1066.0
+offset_bottom = 354.0
+texture = ExtResource("7_mx3du")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 940.0
+offset_top = 284.0
+offset_right = 1002.0
+offset_bottom = 310.0
+text = "Player 2
 "

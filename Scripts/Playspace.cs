@@ -63,11 +63,38 @@ public partial class Playspace : Node2D
 					break;
 
 			}
-			for (int lvl = 0; lvl < 1; lvl++)
+			for (int lvl = 0; lvl < 10; lvl++)
 			{
 				switch (lvl)
 				{
 					case 0:
+						level = 1;
+						break;
+					case 1:
+						level = 2; 
+						break;
+					case 2:
+						level = 3;
+						break;
+					case 3:
+						level = 4;
+						break;
+					case 4:
+						level = 5;
+						break;
+					case 5:
+						level = 6;
+						break;
+					case 6:
+						level = 7;
+						break;
+					case 7:
+						level = 8;
+						break;
+					case 8:
+						level = 9;
+						break;
+					case 9:
 						level = 10;
 						break;
 				}
@@ -161,15 +188,21 @@ public partial class Playspace : Node2D
 
         }
 
-		// Game Logic
+		// Round Win Logic
 		var p1Chosen = GetNode<CenterContainer>("Chosen1/Panel/CenterContainer");
 		var p2Chosen = GetNode<CenterContainer>("Chosen2/Panel/CenterContainer");
 
 		var p1WinBox = GetNode<HBoxContainer>("PlayerOneWin");
+		var gomu1 = GetNode<VBoxContainer>("PlayerOneWin/gomugomu1");
+        var goro1 = GetNode<VBoxContainer>("PlayerOneWin/gorogoro1");
+		var goru1 = GetNode<VBoxContainer>("PlayerOneWin/gorugoru1");
 
-		CenterContainer winLoc = null;
+		var p2WinBox = GetNode<HBoxContainer>("PlayerTwoWin");
+        var gomu2 = GetNode<VBoxContainer>("PlayerTwoWin/gomugomu2");
+        var goro2 = GetNode<VBoxContainer>("PlayerTwoWin/gorogoro2");
+        var goru2 = GetNode<VBoxContainer>("PlayerTwoWin/gorugoru2");
 
-		if(p1Chosen.GetChildCount() > 0 && p2Chosen.GetChildCount() > 0)
+        if (p1Chosen.GetChildCount() > 0 && p2Chosen.GetChildCount() > 0)
 		{
 			// Selected cards
 			var selected1 = (BaseCard)p1Chosen.GetChildren()[0];
@@ -181,16 +214,36 @@ public partial class Playspace : Node2D
 
             if (selected1.element == Element.GOMUGOMU)
 			{
-				if(selected2.element == Element.GOROGORO)
+				if (selected2.element == Element.GOROGORO)
 				{
 					GD.Print("PLAYER 1 WINS");
-					winLoc = (CenterContainer)((VBoxContainer)p1WinBox.GetChildren()[0]).GetChildren()[0];
-				}
-				else if(selected2.element == Element.GORUGORU)
-				{
-					GD.Print("PLAYER 2 WINS");
+					Sprite2D gomuP1 = new Sprite2D();
+					gomuP1.Texture = (Texture2D)GD.Load($"res://Images/gomugomu/gomugomufruit/{selected1.color}gomuwin.png");
+					gomu1.AddChild(gomuP1);
 
 				}
+				else if (selected2.element == Element.GORUGORU)
+				{
+					GD.Print("PLAYER 2 WINS");
+					Sprite2D goruP2 = new Sprite2D();
+					goruP2.Texture = (Texture2D)GD.Load($"res://Images/gorugoru/gorugorufruit/{selected2.color}goruwin.png");
+					goru2.AddChild(goruP2);
+
+				}
+				else if (selected1.level > selected2.level)
+				{
+					GD.Print("PLAYER 1 WINS");
+					Sprite2D gomuP1 = new Sprite2D();
+					gomuP1.Texture = (Texture2D)GD.Load($"res://Images/gomugomu/gomugomufruit/{selected1.color}gomuwin.png");
+					gomu1.AddChild(gomuP1);
+				}
+				else if (selected1.level < selected2.level)
+				{
+                    GD.Print("PLAYER 2 WINS");
+                    Sprite2D gomuP2 = new Sprite2D();
+                    gomuP2.Texture = (Texture2D)GD.Load($"res://Images/gomugomu/gomugomufruit/{selected2.color}gomuwin.png");
+                    gomu2.AddChild(gomuP2);
+                }
 				else
 				{
 					GD.Print("TIE");
@@ -198,14 +251,33 @@ public partial class Playspace : Node2D
 			}
 			else if(selected1.element == Element.GORUGORU)
 			{
-				if(selected2.element == Element.GOROGORO)
+				if (selected2.element == Element.GOROGORO)
 				{
-                    GD.Print("PLAYER 2 WINS");
-                }
-				else if(selected2.element == Element.GOMUGOMU)
+					GD.Print("PLAYER 2 WINS");
+					Sprite2D goroP2 = new Sprite2D();
+					goroP2.Texture = (Texture2D)GD.Load($"res://Images/gorogoro/gorogorofruit/{selected2.color}gorowin.png");
+					goro2.AddChild(goroP2);
+				}
+				else if (selected2.element == Element.GOMUGOMU)
 				{
 					GD.Print("PLAYER 1 WINS");
-                    winLoc = (CenterContainer)((VBoxContainer)p1WinBox.GetChildren()[2]).GetChildren()[0];
+					Sprite2D goruP1 = new Sprite2D();
+					goruP1.Texture = (Texture2D)GD.Load($"res://Images/gorugoru/gorugorufruit/{selected1.color}goruwin.png");
+					goru1.AddChild(goruP1);
+				}
+				else if (selected1.level > selected2.level)
+				{
+					GD.Print("PLAYER 1 WINS");
+					Sprite2D goruP1 = new Sprite2D();
+					goruP1.Texture = (Texture2D)GD.Load($"res://Images/gorugoru/gorugorufruit/{selected1.color}goruwin.png");
+					goru1.AddChild(goruP1);
+				}
+				else if (selected1.level < selected2.level)
+				{
+                    GD.Print("PLAYER 2 WINS");
+                    Sprite2D goruP2 = new Sprite2D();
+                    goruP2.Texture = (Texture2D)GD.Load($"res://Images/gorugoru/gorugorufruit/{selected2.color}goruwin.png");
+                    goru2.AddChild(goruP2);
                 }
 				else
 				{
@@ -217,13 +289,32 @@ public partial class Playspace : Node2D
 				if(selected2.element == Element.GORUGORU)
 				{
                     GD.Print("PLAYER 1 WINS");
-                    winLoc = (CenterContainer)((VBoxContainer)p1WinBox.GetChildren()[1]).GetChildren()[0];
+                    Sprite2D goroP1 = new Sprite2D();
+                    goroP1.Texture = (Texture2D)GD.Load($"res://Images/gorogoro/gorogorofruit/{selected1.color}gorowin.png");
+                    goro1.AddChild(goroP1);
 
                 }
 				else if(selected2.element == Element.GOMUGOMU)
 				{
                     GD.Print("PLAYER 2 WINS");
+                    Sprite2D gomuP2 = new Sprite2D();
+                    gomuP2.Texture = (Texture2D)GD.Load($"res://Images/gomugomu/gomugomufruit/{selected2.color}gomuwin.png");
+                    gomu2.AddChild(gomuP2);
 
+                }
+				else if(selected1.level > selected2.level)
+				{
+                    GD.Print("PLAYER 1 WINS");
+                    Sprite2D goroP1 = new Sprite2D();
+                    goroP1.Texture = (Texture2D)GD.Load($"res://Images/gorogoro/gorogorofruit/{selected1.color}gorowin.png");
+                    goro1.AddChild(goroP1);
+                }
+				else if(selected1.level < selected2.level)
+				{
+                    GD.Print("PLAYER 2 WINS");
+                    Sprite2D goroP2 = new Sprite2D();
+                    goroP2.Texture = (Texture2D)GD.Load($"res://Images/gorogoro/gorogorofruit/{selected2.color}gorowin.png");
+                    goro2.AddChild(goroP2);
                 }
 				else
 				{
@@ -233,7 +324,29 @@ public partial class Playspace : Node2D
 
 			p1Chosen.RemoveChild(selected1);
 			p2Chosen.RemoveChild(selected2);
-			winLoc.AddChild(selected1);
+			// winLoc.AddChild(selected1);
 		}
+
+        // Game Win Logic
+        // Will Test for whoever gets a win with 3 elements first to test proof of concept
+
+        var pWin = new PanelContainer();
+        var tContainer = new CenterContainer();
+        var tLabel = new Label();
+
+        if (gomu1.GetChildCount() > 0 && goro1.GetChildCount() > 0 && goru1.GetChildCount() > 0)
+		{
+			tLabel.Text = "Player 1 Wins!";
+			tContainer.AddChild(tLabel);
+			pWin.AddChild(tContainer);
+			AddChild(pWin);
+		}
+		else if(gomu2.GetChildCount() > 0 && goro2.GetChildCount() > 0 && goru2.GetChildCount() > 0)
+		{
+            tLabel.Text = "Player 2 Wins!";
+            tContainer.AddChild(tLabel);
+            pWin.AddChild(tContainer);
+            AddChild(pWin);
+        }
     }
 }
