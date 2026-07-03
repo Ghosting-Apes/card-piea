@@ -1,10 +1,87 @@
-[gd_scene load_steps=2 format=3 uid="uid://crv6abary6adq"]
+[gd_scene format=3 uid="uid://crv6abary6adq"]
 
 [ext_resource type="Texture2D" uid="uid://c5rgic0wtd6gc" path="res://Images/thousand_sunny.png" id="1_fhkww"]
+[ext_resource type="Script" uid="uid://bs7sf3lvfhplj" path="res://scenes/playspace.gd" id="1_llhnx"]
+[ext_resource type="Script" uid="uid://c1t8y0pwtj8xh" path="res://scenes/P1Deckspace.gd" id="2_6rb46"]
+[ext_resource type="Script" uid="uid://bbdmffq2tr7ra" path="res://scenes/P2Deckspace.gd" id="4_v7hh0"]
+[ext_resource type="PackedScene" uid="uid://dm1g2q7xjt32" path="res://scenes/card_holder.tscn" id="6_1ambf"]
 
-[node name="Playspace" type="Node2D"]
+[node name="Playspace" type="Node2D" unique_id=641080507]
+script = ExtResource("1_llhnx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(964, 543.48)
-scale = Vector2(1, 1.00096)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1857426327]
+position = Vector2(961, 541.481)
+scale = Vector2(0.996875, 0.997258)
 texture = ExtResource("1_fhkww")
+
+[node name="PlayerOne" type="Node" parent="." unique_id=849836902]
+
+[node name="Deckspace" type="HBoxContainer" parent="PlayerOne" unique_id=186504099]
+offset_left = 541.0
+offset_top = 870.0
+offset_right = 1330.0
+offset_bottom = 1092.0
+size_flags_vertical = 3
+theme_override_constants/separation = 100
+alignment = 1
+script = ExtResource("2_6rb46")
+
+[node name="P1CardHolder" parent="PlayerOne" unique_id=1088408308 instance=ExtResource("6_1ambf")]
+offset_left = 713.0
+offset_top = 452.0
+offset_right = 862.0
+offset_bottom = 658.0
+
+[node name="P1Wins" type="HBoxContainer" parent="PlayerOne" unique_id=1668930033]
+offset_left = 161.0
+offset_top = 399.0
+offset_right = 275.0
+offset_bottom = 672.0
+
+[node name="Gomu1" type="VBoxContainer" parent="PlayerOne/P1Wins" unique_id=2056508831]
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+
+[node name="Goro1" type="VBoxContainer" parent="PlayerOne/P1Wins" unique_id=539040523]
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+
+[node name="Goru1" type="VBoxContainer" parent="PlayerOne/P1Wins" unique_id=453090726]
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+
+[node name="PlayerTwo" type="Node" parent="." unique_id=1813896725]
+
+[node name="Deckspace" type="HBoxContainer" parent="PlayerTwo" unique_id=1788109473]
+offset_left = 541.0
+offset_top = 10.0
+offset_right = 1330.0
+offset_bottom = 232.0
+size_flags_vertical = 3
+theme_override_constants/separation = 100
+alignment = 1
+script = ExtResource("4_v7hh0")
+
+[node name="P2CardHolder" parent="PlayerTwo" unique_id=833435060 instance=ExtResource("6_1ambf")]
+offset_left = 1023.0
+offset_top = 451.0
+offset_right = 1172.0
+offset_bottom = 658.0
+
+[node name="P2Wins" type="HBoxContainer" parent="PlayerTwo" unique_id=32308399]
+offset_left = 1628.0
+offset_top = 399.0
+offset_right = 1750.0
+offset_bottom = 672.0
+
+[node name="Gomu2" type="VBoxContainer" parent="PlayerTwo/P2Wins" unique_id=2074438075]
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+
+[node name="Goro2" type="VBoxContainer" parent="PlayerTwo/P2Wins" unique_id=204898205]
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+
+[node name="Goru2" type="VBoxContainer" parent="PlayerTwo/P2Wins" unique_id=2140604357]
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
