@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ch3115jkuv26y"
-path="res://.godot/imported/rectangle-frame-gray-background_53876-118339.png-95840c856f66a2ba09980209bd630308.ctex"
+path="res://.godot/imported/rectangle-frame-gray-background_53876-118339.png-2df4a0eec19b049db29c3e85f222c8c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/rectangle-frame-gray-background_53876-118339.png"
-dest_files=["res://.godot/imported/rectangle-frame-gray-background_53876-118339.png-95840c856f66a2ba09980209bd630308.ctex"]
+source_file="res://Images/rectangle-frame-gray-background_53876-118339.png"
+dest_files=["res://.godot/imported/rectangle-frame-gray-background_53876-118339.png-2df4a0eec19b049db29c3e85f222c8c6.ctex"]
 
 [params]
 

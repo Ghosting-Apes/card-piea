@@ -5,6 +5,14 @@ var player_two: Node
 
 var P1CardHolder
 var P2CardHolder
+
+var Gomu1
+var Goro1
+var Goru1
+var Gomu2
+var Goro2
+var Goru2
+
 	
 const CARD = preload("res://scenes/card.tscn")
 var rng = RandomNumberGenerator.new()
@@ -56,6 +64,13 @@ func _ready():
 	P1CardHolder = $PlayerOne/P1CardHolder
 	P2CardHolder = $PlayerTwo/P2CardHolder
 	
+	Gomu1 = $PlayerOne/P1Wins/Gomu1
+	Goro1 = $PlayerOne/P1Wins/Goro1
+	Goru1 = $PlayerOne/P1Wins/Goru1
+	Gomu2 = $PlayerTwo/P2Wins/Gomu2
+	Goro2 = $PlayerTwo/P2Wins/Goro2
+	Goru2 = $PlayerTwo/P2Wins/Goru2
+
 	player_one_deck.shuffle()
 	player_two_deck.shuffle()
 	
@@ -70,7 +85,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	while(player_one_deck and player_one.get_child_count() < 5):
+	while(player_one_deck and player_one.get_child_count() < 5): #we should do this after round ends or make it so cant replace card played
 		player_one.add_child(player_one_deck[0])
 		player_one_deck.remove_at(0)
 	
@@ -89,35 +104,63 @@ func _process(delta):
 		P2CardHolder.texture = null
 		
 func get_winner(p1: Card, p2: Card) -> int:
+	var winFruit = Sprite2D.new()
+	var p1color = p1.color
+	var p2color = p2.color
+	
 	match p1.card_type:
 		"gomu":
 			if p2.card_type == "goro":
+				winFruit.texture = load("res://Images/gomu/gomufruits/%sgomuwin.png" % p1color)
+				Gomu1.add_child(winFruit)
 				return 1
 			elif p2.card_type == "goru":
+				winFruit.texture = load("res://Images/goru/gorufruits/%sgoruwin.png" % p2color)
+				Goru2.add_child(winFruit)
 				return 2
 			if p1.level > p2.level:
+				winFruit.texture = load("res://Images/gomu/gomufruits/%sgomuwin.png" % p1color)
+				Gomu1.add_child(winFruit)
 				return 1
 			elif p2.level > p1.level:
+				winFruit.texture = load("res://Images/gomu/gomufruits/%sgomuwin.png" % p2color)
+				Gomu2.add_child(winFruit)
 				return 2
 		"goro":
 			match p2.card_type:
 				"goru":
+					winFruit.texture = load("res://Images/goro/gorofruits/%sgorowin.png" % p1color)
+					Goro1.add_child(winFruit)
 					return 1
 				"gomu":
+					winFruit.texture = load("res://Images/gomu/gomufruits/%sgomuwin.png" % p2color)
+					Gomu2.add_child(winFruit)
 					return 2
 			if p1.level > p2.level:
+				winFruit.texture = load("res://Images/goro/gorofruits/%sgorowin.png" % p1color)
+				Goro1.add_child(winFruit)
 				return 1
 			elif p2.level > p1.level:
+				winFruit.texture = load("res://Images/goro/gorofruits/%sgorowin.png" % p2color)
+				Goro2.add_child(winFruit)
 				return 2
 		"goru":
 			match p2.card_type:
 				"gomu":
+					winFruit.texture = load("res://Images/goru/gorufruits/%sgoruwin.png" % p1color)
+					Goru1.add_child(winFruit)
 					return 1
 				"goro":
+					winFruit.texture = load("res://Images/goro/gorofruits/%sgorowin.png" % p2color)
+					Goro2.add_child(winFruit)
 					return 2
 			if p1.level > p2.level:
+				winFruit.texture = load("res://Images/goru/gorufruits/%sgoruwin.png" % p1color)
+				Goru1.add_child(winFruit)
 				return 1
 			elif p2.level > p1.level:
+				winFruit.texture = load("res://Images/goru/gorufruits/%sgoruwin.png" % p2color)
+				Goru2.add_child(winFruit)
 				return 2
 	return 0
 			
